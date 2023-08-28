@@ -1,0 +1,24 @@
+{% extends 'shop/base.html' %}
+
+{% block content %}
+<h2>{{ error }}</h2>
+<h1>{{ shop }}</h1>
+
+<div class="but">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn">Сохранить</button>
+    </form>
+
+    <form action="{% url 'completeshop' shop.id %}" method="post">
+        {% csrf_token %}
+        <button class="btn good">Купить</button>
+    </form>
+
+    <form action="{% url 'deleteshop' shop.id %}" method="post">
+        {% csrf_token %}
+        <button class="btn remove">Удалить</button>
+    </form>
+</div>
+{% endblock %}

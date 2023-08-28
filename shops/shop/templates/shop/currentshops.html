@@ -1,0 +1,20 @@
+{% extends 'shop/base.html' %}
+
+{% block content %}
+<h1>Товары:</h1>
+
+<ul>
+    {% for shop in shops %}
+    <li>
+        <a href="{% url 'viewshop' shop.id %}">
+            <b>{{ shop.title }} {{ shop.image }} {{ shop.memo }}</b>
+        </a>
+    </li>
+    <form action="{% url 'completeshop' shop.id %}" method="post">
+        {% csrf_token %}
+        <button class="btn good">Купить</button>
+    </form>
+
+    {% endfor %}
+</ul>
+{% endblock %}

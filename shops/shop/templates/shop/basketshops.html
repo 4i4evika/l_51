@@ -1,0 +1,21 @@
+{% extends 'shop/base.html' %}
+
+{% block content %}
+<h1>Корзина:</h1>
+
+<ul>
+    {% for shop in shops %}
+    <li>
+        <a href="{% url 'viewshop' shop.id %}">
+            <b>{{ shop }}</b>
+        </a>
+        <div>
+            {% if shop.memo %}
+            - {{ shop.memo }}
+            {% endif %}
+        </div>
+    </li>
+
+    {% endfor %}
+</ul>
+{% endblock %}
